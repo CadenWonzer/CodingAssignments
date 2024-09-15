@@ -2,7 +2,7 @@
 Student information for this assignment:
 
 Replace <FULL NAME> with your name.
-On my/our honor, <FULL NAME> and <FULL NAME>, this 
+On my/our honor, <FULL NAME> and <Isabella Chojnacki>, this 
 programming assignment is my own work and I have not provided this code to 
 any other student.
 
@@ -13,7 +13,7 @@ code to someone else), the case shall be submitted to the Office of the Dean of
 Students. Academic penalties up to and including an F in the course are likely.
 
 UT EID 1:
-UT EID 2:
+UT EID 2: ilc422
 """
 
 
