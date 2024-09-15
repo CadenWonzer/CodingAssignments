@@ -20,8 +20,12 @@ UT EID 2: ilc422
 # Iterates over a 2D list from left to right, then top to bottom
 # and returning the coordinates (row, column).
 def row_major_traversal(grid):
-    return []
-
+    order = []
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            pair = (i,j)
+            order.append(pair)
+    return order
 
 # Iterates over a 2D list from left to right, then top to bottom
 # and returning the coordinates (row, column).
