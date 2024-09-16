@@ -20,6 +20,7 @@ UT EID 2: ilc422
 # Iterates over a 2D list from left to right, then top to bottom
 # and returning the coordinates (row, column).
 def row_major_traversal(grid):
+    """Traverses the grid row by row"""
     order = []
     for i in range(len(grid)):
         for j in range(len(grid[i])):
@@ -30,6 +31,7 @@ def row_major_traversal(grid):
 # Iterates over a 2D list from left to right, then top to bottom
 # and returning the coordinates (row, column).
 def column_major_traversal(grid):
+    """Traverses the grid column by column"""
     order = []
     col_len = len(grid[0])
     for j in range(col_len):
@@ -42,13 +44,14 @@ def column_major_traversal(grid):
 # Iterates over a 2D list from top to bottom then left to right
 # and returning the coordinates (row, column).
 def row_zigzag_traversal(grid):
+    """Traveres the grid row by row in a zig-zag right left order"""
     order = []
     for i in range(len(grid)):
         if i % 2 == 0:
             for j in range(len(grid[i])):
                 pair = (i, j)
                 order.append(pair)
-        if i % 2 == 1:        
+        if i % 2 == 1:
             for j in range(len(grid[i])-1, -1, -1):
                 pair = (i, j)
                 order.append(pair)
@@ -59,6 +62,7 @@ def row_zigzag_traversal(grid):
 # left to right and right to left, going from top to bottom
 # and returning the coordinates (row, column).
 def column_zigzag_traversal(grid):
+    """Travereses the grip in column by column in a zig-zag top to bottom order"""
     order = []
     col_len = len(grid[0])
     for j in range(col_len):
@@ -77,6 +81,7 @@ def column_zigzag_traversal(grid):
 # in the direction of the main diagonal and returning the
 # coordinates (row, column).
 def main_diagonal_traversal(grid):
+    """Traverses the grid in diagons from top right to bottom left"""
     order = []
     for j in range(len(grid[0])-1, -1, -1):
         pair = (0, j)
@@ -100,6 +105,7 @@ def main_diagonal_traversal(grid):
 # in the direction of the secondary diagonal and returning the
 # coordinates (row, column).
 def secondary_diagonal_traversal(grid):
+    """Traverses the grid in diagons from top left to bottom right"""
     order = []
     for j in range(0, len(grid[0]), 1):
         pair = (0, j)
@@ -123,6 +129,7 @@ def secondary_diagonal_traversal(grid):
 # Iterates over a 2D list in spiral order and returning the
 # coordinates (row, column).
 def spiral_traversal(grid):
+    """Traverses grip in a spiral starting from the top left"""
     order = []
     top_offset = 1
     bottom_offset = 0
