@@ -124,8 +124,10 @@ def secondary_diagonal_traversal(grid):
 # coordinates (row, column).
 def spiral_traversal(grid):
     order = []
-    rows = len(grid)
-    cols = len(grid[0])
+    top_offset = 1
+    bottom_offset = 0
+    left_offset = 0
+    right_offset = 0
     end_size = len(grid) * len(grid[0])
     turn = 1
     for j in range(len(grid[0])):
@@ -134,24 +136,25 @@ def spiral_traversal(grid):
     while len(order) < end_size:
         if turn % 2 == 0:
             if turn % 4 == 2:
-                for j in range(cols-1, len(grid[0])-cols, -1):
-                    pair = (rows-1, j)
+                for j in range(len(grid[0])-1-right_offset, left_offset-1, -1):
+                    pair = (len(grid)-1-bottom_offset, j)
                     order.append(pair)
+                bottom_offset+=1
             else:
-                for j in range(len(grid)-rows, rows, 1):
-                    pair = (len(grid[0])-rows-1, j)
+                for j in range(left_offset, len(grid[0])-right_offset, 1):
+                    pair = (top_offset, j)
                     order.append(pair)
-            turn+=1
-            cols-=1
+                top_offset+=1
         if turn % 2 == 1:
             if turn % 4 == 3:
-                for i in range(rows-1, len(grid)-rows, -1):
-                    pair = (i, len(grid[0])-1-cols)
+                for i in range(len(grid)-1-bottom_offset, top_offset-1, -1):
+                    pair = (i, left_offset)
                     order.append(pair)
+                left_offset+=1
             else:
-                for i in range(len(grid[0])-cols, cols, 1):
-                    pair = (i, cols-1)
+                for i in range(top_offset, len(grid)-bottom_offset, 1):
+                    pair = (i, len(grid[0])-1-right_offset)
                     order.append(pair)
-            turn+=1
-            rows-=1
+                right_offset+=1
+        turn+=1
     return order
