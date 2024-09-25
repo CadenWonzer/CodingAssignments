@@ -120,29 +120,26 @@ def prepare_game():
           valid_words: A list of valid guess words from valid_guesses.txt.
     """
 
-    # Specify "ascii" as its representation (encoding) since its required by pylint.
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
         valid_words = [word.rstrip() for word in valid_nonsecret_words.readlines()]
 
-    # Modify this if statement! This is just starter code.
+    with open("secret_word.txt", "r", encoding="ascii") as s_words:
+        secret_words = [word.rstrip() for word in s_words.readlines()]
+    
     if len(sys.argv) == 2:
-        secret_word = sys.argv[1]
+        if isinstance(sys.argv[1], int):
+            random.seed(sys.argsv[1])
+            secret_word = random.choice(secret_words)
+        else:
+            secret_word = sys.argv[1]
+            valid_words.append(secret_word)
     else:
-        secret_word = "hello"
+        secret_word = random.choice(secret_words)
 
-    # You do not have to change this return statement
     return secret_word, valid_words
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def is_valid_guess(guess, valid_guesses):
-    if guess in valid_guesses:
-        return True
-    else:
-        return False
-    
-        
-    
     """
     Checks if a given guess is valid.
 
@@ -152,11 +149,12 @@ def is_valid_guess(guess, valid_guesses):
     post: returns a boolean value
     """
 
-    # Modify this return statement!
-    
+    if guess in valid_guesses:
+        return True
+    else:
+        return False
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def get_feedback(secret_word, guessed_word):
     with open('valid_guesses.txt', 'r') as file:
         valid_guesses = []
