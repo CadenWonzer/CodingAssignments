@@ -127,8 +127,8 @@ def prepare_game():
         secret_words = [word.rstrip() for word in s_words.readlines()]
     
     if len(sys.argv) == 2:
-        if isinstance(sys.argv[1], int):
-            random.seed(sys.argsv[1])
+        if sys.argv[1].isdigit():
+            random.seed(int(sys.argsv[1]))
             secret_word = random.choice(secret_words)
         else:
             secret_word = sys.argv[1]
