@@ -2,7 +2,7 @@
 Student information for this assignment:
 
 Replace <FULL NAME> with your name.
-On my/our honor, <FULL NAME> and <FULL NAME>, this 
+On my/our honor, <FULL NAME> and <Isabella Chojnacki>, this 
 programming assignment is my own work and I have not provided this code to 
 any other student.
 
@@ -13,7 +13,7 @@ code to someone else), the case shall be submitted to the Office of the Dean of
 Students. Academic penalties up to and including an F in the course are likely.
 
 UT EID 1:
-UT EID 2:
+UT EID 2:ilc422
 """
 
 import random
@@ -136,6 +136,13 @@ def prepare_game():
 
 # TODO: Modify this function. You may delete this comment when you are done.
 def is_valid_guess(guess, valid_guesses):
+    if guess in valid_guesses:
+        return True
+    else:
+        return False
+    
+        
+    
     """
     Checks if a given guess is valid.
 
@@ -146,11 +153,22 @@ def is_valid_guess(guess, valid_guesses):
     """
 
     # Modify this return statement!
-    return True
+    
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
 def get_feedback(secret_word, guessed_word):
+    with open('valid_guesses.txt', 'r') as file:
+        valid_guesses = []
+        i = 0
+        for line in file:
+            valid_guesses = line.strip()
+            i += 1
+    if is_valid_guess(guessed_word, valid_guesses) == False:
+        print(INVALID_INPUT)
+    
+       
+
     """
     Processes the guess and generates the colored feedback based on the secret
     word.
