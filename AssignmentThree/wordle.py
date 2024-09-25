@@ -125,14 +125,22 @@ def prepare_game():
 
     with open("secret_word.txt", "r", encoding="ascii") as s_words:
         secret_words = [word.rstrip() for word in s_words.readlines()]
-    
-    if len(sys.argv) == 2:
+    if len(sys.argv) > 2:
+        raise ValueError
+    elif len(sys.argv) == 2:
         if sys.argv[1].isdigit():
-            random.seed(int(sys.argsv[1]))
+            random.seed(int(sys.argv[1]))
             secret_word = random.choice(secret_words)
         else:
-            secret_word = sys.argv[1]
-            valid_words.append(secret_word)
+            if sys.argv[1].lower() != sys.argv[1]:
+                raise ValueError
+            elif sys.argv[1].isalpha() and len(sys.argv[1]) == 5:
+                valid_words.append(sys.argv[1])
+            
+            if sys.argv[1] in valid_words:
+                secret_word = sys.argv[1]
+            else:
+                raise ValueError
     else:
         secret_word = random.choice(secret_words)
 
