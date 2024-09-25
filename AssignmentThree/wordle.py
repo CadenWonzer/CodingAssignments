@@ -198,6 +198,7 @@ def get_feedback(secret_word, guessed_word):
         if secret_word[i] is guessed_word[i]:
             feedback[i] = CORRECT_COLOR
         elif guessed_word[i] in secret_word:
+            if guessed_word.count(guessed_word[i]) == secret_word.count(guessed_word[i]):
             feedback[i] = WRONG_SPOT_COLOR
         else:
             feedback[i] = NOT_IN_WORD_COLOR
