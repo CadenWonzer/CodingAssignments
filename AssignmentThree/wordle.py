@@ -164,17 +164,6 @@ def is_valid_guess(guess, valid_guesses):
 
 
 def get_feedback(secret_word, guessed_word):
-    with open('valid_guesses.txt', 'r') as file:
-        valid_guesses = []
-        i = 0
-        for line in file:
-            valid_guesses = line.strip()
-            i += 1
-    if is_valid_guess(guessed_word, valid_guesses) == False:
-        print(INVALID_INPUT)
-    
-       
-
     """
     Processes the guess and generates the colored feedback based on the secret
     word.
