@@ -123,7 +123,7 @@ def prepare_game():
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
         valid_words = [word.rstrip() for word in valid_nonsecret_words.readlines()]
 
-    with open("secret_word.txt", "r", encoding="ascii") as s_words:
+    with open("secret_words.txt", "r", encoding="ascii") as s_words:
         secret_words = [word.rstrip() for word in s_words.readlines()]
     if len(sys.argv) > 2:
         raise ValueError
